@@ -1,0 +1,43 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    AppController = {
+	Actions = (
+	    "showPrefPanel:"
+	);
+	Outlets = (
+	);
+	Super = NSObject;
+    };
+    FirstResponder = {
+	Actions = (
+	    "addIwad:",
+	    "deleteIwad:",
+	    "launch:",
+	    "orderFrontFontPanel:",
+	    "runSetup:",
+	    "showPrefPanel:"
+	);
+	Super = NSObject;
+    };
+    IWADList = {
+	Actions = (
+	    "addIwad:",
+	    "deleteIwad:"
+	);
+	Outlets = (
+	    iwadListTable
+	);
+	Super = NSObject;
+    };
+    LauncherManager = {
+	Actions = (
+	    "launch:",
+	    "runSetup:"
+	);
+	Outlets = (
+	    commandLineArguments,
+	    iwadList
+	);
+	Super = NSObject;
+    };
+}

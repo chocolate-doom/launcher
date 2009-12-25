@@ -1,0 +1,12 @@
+{
+    ApplicationDescription = "No description avaliable!";
+    ApplicationName = "chocolate-launcher";
+    ApplicationRelease = 0.1;
+    Copyright = "Copyright (C) 200x";
+    CopyrightDescription = "Released under ...";
+    FullVersionID = 0.1;
+    NSExecutable = "chocolate-launcher";
+    NSMainNibFile = launcher.gorm;
+    NSPrincipalClass = NSApplication;
+    NSRole = Application;
+}
