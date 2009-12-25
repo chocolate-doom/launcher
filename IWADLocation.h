@@ -27,8 +27,9 @@
     id locationConfigBox;
 }
 
-- (void) setLocation: (id)sender;
+- (void) setButtonClicked: (id)sender;
 - (NSString *) getLocation;
+- (void) setLocation: (NSString *) value;
 
 @end
 

@@ -17,7 +17,7 @@
 	    "openConfigWindow:",
 	    "orderFrontFontPanel:",
 	    "runSetup:",
-	    "setLocation:",
+	    "setButtonClicked:",
 	    "showPrefPanel:"
 	);
 	Super = NSObject;
@@ -40,7 +40,7 @@
     };
     IWADLocation = {
 	Actions = (
-	    "setLocation:"
+	    "setButtonClicked:"
 	);
 	Outlets = (
 	    locationConfigBox

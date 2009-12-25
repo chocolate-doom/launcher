@@ -30,11 +30,10 @@ static id WAD_TYPES[] =
 
 @implementation IWADLocation
 
-- (void) setLocation: (id)sender
+- (void) setButtonClicked: (id)sender
 {
     NSArray *wadTypes = [NSArray arrayWithObjects: WAD_TYPES count: 2];
     NSOpenPanel *openPanel;
-    NSString *filename;
     NSArray *filenames;
     int result;
 
@@ -54,14 +53,18 @@ static id WAD_TYPES[] =
     if (result == NSOKButton)
     {
         filenames = [openPanel filenames];
-	filename = [filenames lastObject];
-	[self->locationConfigBox setStringValue: filename];
+	[self setLocation: [filenames lastObject]];
     }
 }
 
 - (NSString *) getLocation
 {
     return [self->locationConfigBox stringValue];
+}
+
+- (void) setLocation: (NSString *) filename
+{
+    [self->locationConfigBox setStringValue: filename];
 }
 
 @end
