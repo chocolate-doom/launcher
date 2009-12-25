@@ -2,6 +2,7 @@
 
 #include <AppKit/AppKit.h>
 #include "LauncherManager.h"
+#include "config.h"
 
 @implementation LauncherManager
 
@@ -20,4 +21,11 @@
 {
 }
 
+- (void) awakeFromNib
+{
+    [self->packageLabel setStringValue: @PACKAGE_STRING];
+    [self->launcherWindow setTitle: @PACKAGE_NAME " Launcher"];
+}
+
 @end
+

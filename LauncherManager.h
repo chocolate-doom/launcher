@@ -6,6 +6,8 @@
 @interface LauncherManager : NSObject
 {
     id commandLineArguments;
+    id packageLabel;
+    id launcherWindow;
     IWADController *iwadController;
 }
 

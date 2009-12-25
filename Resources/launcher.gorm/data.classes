@@ -54,7 +54,9 @@
 	);
 	Outlets = (
 	    commandLineArguments,
-	    iwadController
+	    iwadController,
+	    packageLabel,
+	    launcherWindow
 	);
 	Super = NSObject;
     };
