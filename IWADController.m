@@ -42,9 +42,12 @@ static NSString *IWADLabels[NUM_IWAD_TYPES] =
     IWADLocation *iwadList[NUM_IWAD_TYPES];
     id location;
     unsigned int i;
+    unsigned int enabled_wads;
 
     [self getIWADList: iwadList];
     [self->iwadSelector removeAllItems];
+
+    enabled_wads = 0;
 
     for (i=0; i<NUM_IWAD_TYPES; ++i)
     {
@@ -53,8 +56,11 @@ static NSString *IWADLabels[NUM_IWAD_TYPES] =
         if (location != nil && [location length] > 0)
         {
             [self->iwadSelector addItemWithTitle: IWADLabels[i]];
+            ++enabled_wads;
         }
     }
+
+    [self->iwadSelector setEnabled: (enabled_wads > 0)];
 }
 
 - (IWAD) getSelectedIWAD
