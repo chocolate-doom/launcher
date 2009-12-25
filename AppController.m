@@ -26,36 +26,37 @@
 
 + (void)initialize
 {
-  NSMutableDictionary *defaults = [NSMutableDictionary dictionary];
+    NSMutableDictionary *defaults = [NSMutableDictionary dictionary];
 
-  /*
-   * Register your app's defaults here by adding objects to the
-   * dictionary, eg
-   *
-   * [defaults setObject:anObject forKey:keyForThatObject];
-   *
-   */
-  
-  [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
-  [[NSUserDefaults standardUserDefaults] synchronize];
+    /*
+     * Register your app's defaults here by adding objects to the
+     * dictionary, eg
+     *
+     * [defaults setObject:anObject forKey:keyForThatObject];
+     *
+     */
+
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (id)init
 {
-  if ((self = [super init]))
+    if ((self = [super init]))
     {
     }
-  return self;
+
+    return self;
 }
 
 - (void)dealloc
 {
-  [super dealloc];
+    [super dealloc];
 }
 
 - (void)awakeFromNib
 {
-  [[NSApp mainMenu] setTitle:@"ChocolateDoomLauncher"];
+    [[NSApp mainMenu] setTitle:@"ChocolateDoomLauncher"];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotif
@@ -66,7 +67,7 @@
 
 - (BOOL)applicationShouldTerminate:(id)sender
 {
-  return YES;
+    return YES;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotif
@@ -82,3 +83,4 @@
 }
 
 @end
+
