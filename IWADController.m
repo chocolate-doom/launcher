@@ -55,11 +55,12 @@ static NSString *IWADLabels[NUM_IWAD_TYPES] =
 }
 
 // Set the dropdown list to include an entry for each IWAD that has
-// been configured.
+// been configured.  Returns true if at least one IWAD is configured.
 
-- (void) setDropdownList
+- (BOOL) setDropdownList
 {
     IWADLocation *iwadList[NUM_IWAD_TYPES];
+    BOOL have_wads;
     id location;
     unsigned int i;
     unsigned int enabled_wads;
@@ -80,7 +81,10 @@ static NSString *IWADLabels[NUM_IWAD_TYPES] =
         }
     }
 
-    [self->iwadSelector setEnabled: (enabled_wads > 0)];
+    have_wads = enabled_wads > 0;
+    [self->iwadSelector setEnabled: have_wads];
+
+    return have_wads;
 }
 
 - (IWAD) getSelectedIWAD
@@ -136,6 +140,17 @@ static NSString *IWADLabels[NUM_IWAD_TYPES] =
 {
     [self->configWindow orderOut: sender];
     [self setDropdownList];
+}
+
+- (void) awakeFromNib
+{
+    // Populate the dropdown IWAD list, and open the configuration
+    // dialog if not yet configured.
+
+    if (![self setDropdownList])
+    {
+        [self openConfigWindow: nil];
+    }
 }
 
 @end
