@@ -1,5 +1,5 @@
 {
-    APPLICATIONICON = "";
+    APPLICATIONICON = "48x48.png";
     APP_DOCUMENT_BASED = NO;
     APP_TYPE = GORM;
     BUILDER_ARGS = (

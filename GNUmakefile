@@ -10,7 +10,7 @@ include $(GNUSTEP_MAKEFILES)/common.make
 VERSION = 0.1
 PACKAGE_NAME = chocolate-launcher
 APP_NAME = chocolate-launcher
-chocolate-launcher_APPLICATION_ICON = 
+chocolate-launcher_APPLICATION_ICON = 48x48.png
 
 
 #
@@ -20,7 +20,8 @@ chocolate-launcher_RESOURCE_FILES = \
 Resources/launcher.gorm \
 Resources/Main.gsmarkup \
 Resources/MainMenu-GNUstep.gsmarkup \
-Resources/MainMenu-OSX.gsmarkup 
+Resources/MainMenu-OSX.gsmarkup \
+Resources/48x48.png
 
 
 #
