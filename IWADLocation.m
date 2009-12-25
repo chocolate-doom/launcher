@@ -13,6 +13,7 @@ static id WAD_TYPES[] = {
 {
     NSArray *wadTypes = [NSArray arrayWithObjects: WAD_TYPES count: 2];
     NSOpenPanel *openPanel;
+    NSString *filename;
     NSArray *filenames;
     int result;
 
@@ -32,7 +33,8 @@ static id WAD_TYPES[] = {
     if (result == NSOKButton)
     {
         filenames = [openPanel filenames];
-	[self->locationConfigBox setStringValue: [filenames lastObject]];
+	filename = [filenames lastObject];
+	[self->locationConfigBox setStringValue: filename];
     }
 }
 

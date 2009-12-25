@@ -12,6 +12,10 @@
   id plutonia;
   id tnt;
 }
+
 - (void) closeConfigWindow: (id)sender;
 - (void) openConfigWindow: (id)sender;
+- (NSString *) getIWADLocation;
+
 @end
+
