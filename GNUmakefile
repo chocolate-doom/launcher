@@ -28,7 +28,8 @@ Resources/MainMenu-OSX.gsmarkup
 #
 chocolate-launcher_HEADER_FILES = \
 AppController.h \
-IWADList.h \
+IWADController.h \
+IWADLocation.h \
 LauncherManager.h
 
 #
@@ -36,7 +37,8 @@ LauncherManager.h
 #
 chocolate-launcher_OBJC_FILES = \
 AppController.m \
-IWADList.m \
+IWADController.m \
+IWADLocation.m \
 LauncherManager.m
 
 #

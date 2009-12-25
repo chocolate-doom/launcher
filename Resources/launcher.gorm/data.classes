@@ -13,19 +13,37 @@
 	    "addIwad:",
 	    "deleteIwad:",
 	    "launch:",
+	    "closeConfigWindow:",
+	    "openConfigWindow:",
 	    "orderFrontFontPanel:",
 	    "runSetup:",
+	    "setLocation:",
 	    "showPrefPanel:"
 	);
 	Super = NSObject;
     };
-    IWADList = {
+    IWADController = {
 	Actions = (
-	    "addIwad:",
-	    "deleteIwad:"
+	    "closeConfigWindow:",
+	    "openConfigWindow:"
 	);
 	Outlets = (
-	    iwadListTable
+	    chex,
+	    doom1,
+	    doom2,
+	    iwadSelector,
+	    configWindow,
+	    plutonia,
+	    tnt
+	);
+	Super = NSObject;
+    };
+    IWADLocation = {
+	Actions = (
+	    "setLocation:"
+	);
+	Outlets = (
+	    locationConfigBox
 	);
 	Super = NSObject;
     };
@@ -36,7 +54,7 @@
 	);
 	Outlets = (
 	    commandLineArguments,
-	    iwadList
+	    iwadController
 	);
 	Super = NSObject;
     };

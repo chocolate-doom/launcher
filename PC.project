@@ -6,7 +6,8 @@
     );
     CLASS_FILES = (
 	AppController.m,
-	IWADList.m,
+	IWADController.m,
+	IWADLocation.m,
 	LauncherManager.m
     );
     COMPILEROPTIONS = "";
@@ -18,7 +19,8 @@
     );
     HEADER_FILES = (
 	AppController.h,
-	IWADList.h,
+	IWADController.h,
+	IWADLocation.h,
 	LauncherManager.h
     );
     IMAGES = (
@@ -55,7 +57,7 @@
     PRINCIPAL_CLASS = NSApplication;
     PROJECT_AUTHORS = (
     );
-    PROJECT_COPYRIGHT = "Copyright (C) 200x";
+    PROJECT_COPYRIGHT = "Copyright (C) 2009";
     PROJECT_COPYRIGHT_DESC = "Released under ...";
     PROJECT_CREATOR = "Simon Howard,,,";
     PROJECT_DESCRIPTION = "No description avaliable!";
