@@ -43,6 +43,16 @@ static NSString *IWADLabels[NUM_IWAD_TYPES] =
     @"Chex Quest"
 };
 
+static NSString *IWADFilenames[NUM_IWAD_TYPES + 1] =
+{
+    @"doom.wad",
+    @"doom2.wad",
+    @"tnt.wad",
+    @"plutonia.wad",
+    @"chex.wad",
+    @"undefined"
+};
+
 @implementation IWADController
 
 - (void) getIWADList: (IWADLocation **) iwadList
@@ -52,39 +62,6 @@ static NSString *IWADLabels[NUM_IWAD_TYPES] =
     iwadList[IWAD_TNT] = self->tnt;
     iwadList[IWAD_PLUTONIA] = self->plutonia;
     iwadList[IWAD_CHEX] = self->chex;
-}
-
-// Set the dropdown list to include an entry for each IWAD that has
-// been configured.  Returns true if at least one IWAD is configured.
-
-- (BOOL) setDropdownList
-{
-    IWADLocation *iwadList[NUM_IWAD_TYPES];
-    BOOL have_wads;
-    id location;
-    unsigned int i;
-    unsigned int enabled_wads;
-
-    [self getIWADList: iwadList];
-    [self->iwadSelector removeAllItems];
-
-    enabled_wads = 0;
-
-    for (i=0; i<NUM_IWAD_TYPES; ++i)
-    {
-        location = [iwadList[i] getLocation];
-
-        if (location != nil && [location length] > 0)
-        {
-            [self->iwadSelector addItemWithTitle: IWADLabels[i]];
-            ++enabled_wads;
-        }
-    }
-
-    have_wads = enabled_wads > 0;
-    [self->iwadSelector setEnabled: have_wads];
-
-    return have_wads;
 }
 
 - (IWAD) getSelectedIWAD
@@ -123,6 +100,132 @@ static NSString *IWADLabels[NUM_IWAD_TYPES] =
     }
 }
 
+- (void) setIWADConfig
+{
+    IWADLocation *iwadList[NUM_IWAD_TYPES];
+    NSUserDefaults *defaults;
+    NSString *key;
+    NSString *value;
+    unsigned int i;
+
+    [self getIWADList: iwadList];
+
+    // Load IWAD filename paths
+
+    defaults = [NSUserDefaults standardUserDefaults];
+
+    for (i=0; i<NUM_IWAD_TYPES; ++i)
+    {
+        key = IWADFilenames[i];
+        value = [defaults stringForKey:key];
+
+        if (value != nil)
+        {
+            [iwadList[i] setLocation:value];
+        }
+    }
+}
+
+// On startup, set the selected item in the IWAD dropdown
+
+- (void) setDropdownSelection
+{
+    NSUserDefaults *defaults;
+    NSString *selected;
+    unsigned int i;
+
+    defaults = [NSUserDefaults standardUserDefaults];
+    selected = [defaults stringForKey: @"selected_iwad"];
+
+    if (selected == nil)
+    {
+        return;
+    }
+
+    // Find this IWAD in the filenames list, and select it.
+
+    for (i=0; i<NUM_IWAD_TYPES; ++i)
+    {
+        if ([selected isEqualToString:IWADFilenames[i]])
+        {
+            [self->iwadSelector selectItemWithTitle:IWADLabels[i]];
+            break;
+        }
+    }
+}
+
+// Set the dropdown list to include an entry for each IWAD that has
+// been configured.  Returns true if at least one IWAD is configured.
+
+- (BOOL) setDropdownList
+{
+    IWADLocation *iwadList[NUM_IWAD_TYPES];
+    BOOL have_wads;
+    id location;
+    unsigned int i;
+    unsigned int enabled_wads;
+
+    // Build the new list.
+
+    [self getIWADList: iwadList];
+    [self->iwadSelector removeAllItems];
+
+    enabled_wads = 0;
+
+    for (i=0; i<NUM_IWAD_TYPES; ++i)
+    {
+        location = [iwadList[i] getLocation];
+
+        if (location != nil && [location length] > 0)
+        {
+            [self->iwadSelector addItemWithTitle: IWADLabels[i]];
+            ++enabled_wads;
+        }
+    }
+
+    // Enable/disable the dropdown depending on whether there
+    // were any configured IWADs.
+
+    have_wads = enabled_wads > 0;
+    [self->iwadSelector setEnabled: have_wads];
+
+    // Restore the old selection.
+
+    [self setDropdownSelection];
+
+    return have_wads;
+}
+
+- (void) saveConfig
+{
+    IWADLocation *iwadList[NUM_IWAD_TYPES];
+    IWAD selectedIWAD;
+    NSUserDefaults *defaults;
+    NSString *key;
+    NSString *value;
+    unsigned int i;
+
+    [self getIWADList: iwadList];
+
+    // Store all IWAD locations to user defaults.
+
+    defaults = [NSUserDefaults standardUserDefaults];
+
+    for (i=0; i<NUM_IWAD_TYPES; ++i)
+    {
+        key = IWADFilenames[i];
+        value = [iwadList[i] getLocation];
+
+        [defaults setObject:value forKey:key];
+    }
+
+    // Save currently selected IWAD.
+
+    selectedIWAD = [self getSelectedIWAD];
+    [defaults setObject:IWADFilenames[selectedIWAD]
+              forKey:@"selected_iwad"];
+}
+
 // Callback method invoked when the configuration button in the main
 // window is clicked.
 
@@ -139,15 +242,24 @@ static NSString *IWADLabels[NUM_IWAD_TYPES] =
 - (void) closeConfigWindow: (id)sender
 {
     [self->configWindow orderOut: sender];
+    [self saveConfig];
     [self setDropdownList];
 }
 
 - (void) awakeFromNib
 {
+    // Set configuration for all IWADs from configuration file.
+
+    [self setIWADConfig];
+
     // Populate the dropdown IWAD list, and open the configuration
     // dialog if not yet configured.
 
-    if (![self setDropdownList])
+    if ([self setDropdownList])
+    {
+        [self setDropdownSelection];
+    }
+    else
     {
         [self openConfigWindow: nil];
     }

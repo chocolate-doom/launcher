@@ -20,19 +20,28 @@
 //
 //-----------------------------------------------------------------------------
 
+#ifndef LAUNCHER_LAUNCHERMANAGER_H
+#define LAUNCHER_LAUNCHERMANAGER_H
+
 #include <AppKit/AppKit.h>
+#include <AppKit/NSNibLoading.h>
 #include "IWADController.h"
 
 @interface LauncherManager : NSObject
 {
+    IWADController *iwadController;
+
+    id launcherWindow;
+
     id commandLineArguments;
     id packageLabel;
-    id launcherWindow;
-    IWADController *iwadController;
 }
 
 - (void) launch: (id)sender;
 - (void) runSetup: (id)sender;
+- (void) awakeFromNib;
 
 @end
+
+#endif /* #ifndef LAUNCHER_LAUNCHERMANAGER_H */
 

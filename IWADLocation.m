@@ -54,6 +54,9 @@ static id WAD_TYPES[] =
     {
         filenames = [openPanel filenames];
 	[self setLocation: [filenames lastObject]];
+
+        [self->iwadController saveConfig];
+        [self->iwadController setDropdownList];
     }
 }
 

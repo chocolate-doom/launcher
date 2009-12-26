@@ -43,7 +43,8 @@
 	    "setButtonClicked:"
 	);
 	Outlets = (
-	    locationConfigBox
+	    locationConfigBox,
+	    iwadController
 	);
 	Super = NSObject;
     };

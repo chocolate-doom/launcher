@@ -20,10 +20,17 @@
 //
 //-----------------------------------------------------------------------------
 
+#ifndef LAUNCHER_IWADLOCATION_H
+#define LAUNCHER_IWADLOCATION_H
+
 #include <AppKit/AppKit.h>
+
+#include "IWADController.h"
 
 @interface IWADLocation : NSObject
 {
+    IWADController *iwadController;
+
     id locationConfigBox;
 }
 
@@ -32,4 +39,6 @@
 - (void) setLocation: (NSString *) value;
 
 @end
+
+#endif /* #ifndef LAUNCHER_IWADLOCATION_H */
 

@@ -26,25 +26,66 @@
 
 @implementation LauncherManager
 
+// Save configuration.  Invoked when we launch the game or quit.
+
+- (void) saveConfig
+{
+    NSUserDefaults *defaults;
+
+    // Save IWAD configuration and selected IWAD.
+
+    [self->iwadController saveConfig];
+
+    // Save command line arguments.
+
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[self->commandLineArguments stringValue]
+              forKey:@"command_line_args"];
+}
+
+// Load configuration, invoked on startup.
+
+- (void) setConfig
+{
+    NSUserDefaults *defaults;
+    NSString *args;
+
+    defaults = [NSUserDefaults standardUserDefaults];
+
+    args = [defaults stringForKey:@"command_line_args"];
+
+    if (args != nil)
+    {
+        [self->commandLineArguments setStringValue:args];
+    }
+}
+
 - (void) launch: (id)sender
 {
     NSString *iwad;
     NSString *args;
 
+    [self saveConfig];
+
     iwad = [self->iwadController getIWADLocation];
     args = [self->commandLineArguments stringValue];
 
-    printf("Command line: %s %s\n", [iwad UTF8String], [args UTF8String]);
+    if (iwad != nil)
+    {
+        printf("Command line: %s %s\n", [iwad UTF8String], [args UTF8String]);
+    }
 }
 
 - (void) runSetup: (id)sender
 {
+    [self saveConfig];
 }
 
 - (void) awakeFromNib
 {
     [self->packageLabel setStringValue: @PACKAGE_STRING];
     [self->launcherWindow setTitle: @PACKAGE_NAME " Launcher"];
+    [self setConfig];
 }
 
 @end
