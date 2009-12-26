@@ -20,8 +20,7 @@ chocolate-launcher_RESOURCE_FILES = \
 Resources/launcher.gorm \
 Resources/Main.gsmarkup \
 Resources/MainMenu-GNUstep.gsmarkup \
-Resources/MainMenu-OSX.gsmarkup \
-Resources/48x48.png
+Resources/MainMenu-OSX.gsmarkup 
 
 
 #
@@ -29,6 +28,7 @@ Resources/48x48.png
 #
 chocolate-launcher_HEADER_FILES = \
 AppController.h \
+Execute.h \
 IWADController.h \
 IWADLocation.h \
 LauncherManager.h
@@ -38,6 +38,7 @@ LauncherManager.h
 #
 chocolate-launcher_OBJC_FILES = \
 AppController.m \
+Execute.m \
 IWADController.m \
 IWADLocation.m \
 LauncherManager.m

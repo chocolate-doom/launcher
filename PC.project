@@ -1,11 +1,12 @@
 {
-    APPLICATIONICON = "48x48.png";
+    APPLICATIONICON = 48x48.png;
     APP_DOCUMENT_BASED = NO;
     APP_TYPE = GORM;
     BUILDER_ARGS = (
     );
     CLASS_FILES = (
 	AppController.m,
+        Execute.m,
 	IWADController.m,
 	IWADLocation.m,
 	LauncherManager.m
@@ -19,6 +20,7 @@
     );
     HEADER_FILES = (
 	AppController.h,
+        Execute.h,
 	IWADController.h,
 	IWADLocation.h,
 	LauncherManager.h
@@ -33,7 +35,7 @@
 	"MainMenu-OSX.gsmarkup"
     );
     LANGUAGE = English;
-    LAST_EDITING = "2009-12-25 00:36:37 +0000";
+    LAST_EDITING = "2009-12-26 02:46:42 +0000";
     LIBRARIES = (
 	"gnustep-base",
 	"gnustep-gui"

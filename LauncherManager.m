@@ -21,6 +21,7 @@
 //-----------------------------------------------------------------------------
 
 #include <AppKit/AppKit.h>
+#include "Execute.h"
 #include "LauncherManager.h"
 #include "config.h"
 
@@ -72,13 +73,17 @@
 
     if (iwad != nil)
     {
-        printf("Command line: %s %s\n", [iwad UTF8String], [args UTF8String]);
+        ExecuteProgram(PACKAGE_TARNAME, [iwad UTF8String],
+                                        [args UTF8String]);
+        [NSApp terminate:sender];
     }
 }
 
 - (void) runSetup: (id)sender
 {
     [self saveConfig];
+
+    ExecuteProgram("chocolate-setup", NULL, NULL);
 }
 
 - (void) awakeFromNib

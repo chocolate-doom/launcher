@@ -20,13 +20,11 @@
 //
 //-----------------------------------------------------------------------------
 
-#include <AppKit/AppKit.h>
-#include "Execute.h"
+#ifndef LAUNCHER_EXECUTE_H
+#define LAUNCHER_EXECUTE_H
 
-int main(int argc, const char *argv[])
-{
-    SetProgramLocation(argv[0]);
+void SetProgramLocation(const char *path);
+void ExecuteProgram(const char *executable, const char *iwad, const char *args);
 
-    return NSApplicationMain (argc, argv);
-}
+#endif /* #ifndef LAUNCHER_EXECUTE_H */
 
