@@ -20,7 +20,8 @@ chocolate-launcher_RESOURCE_FILES = \
 Resources/launcher.gorm \
 Resources/Main.gsmarkup \
 Resources/MainMenu-GNUstep.gsmarkup \
-Resources/MainMenu-OSX.gsmarkup 
+Resources/MainMenu-OSX.gsmarkup \
+Resources/48x48.png 
 
 
 #

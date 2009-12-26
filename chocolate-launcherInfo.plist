@@ -1,14 +1,18 @@
 {
-    ApplicationDescription = "No description avaliable!";
+    ApplicationDescription = "Launcher program for Chocolate Doom";
     ApplicationIcon = 48x48.png;
     ApplicationName = "chocolate-launcher";
     ApplicationRelease = 0.1;
+    Authors = (
+	"Simon Howard"
+    );
     Copyright = "Copyright (C) 2009";
-    CopyrightDescription = "Released under ...";
+    CopyrightDescription = "GNU General Public License, version 2";
     FullVersionID = 0.1;
     NSExecutable = "chocolate-launcher";
     NSIcon = 48x48.png;
     NSMainNibFile = launcher.gorm;
     NSPrincipalClass = NSApplication;
     NSRole = Application;
+    URL = "http://www.chocolate-doom.org/";
 }
