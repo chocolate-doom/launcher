@@ -83,6 +83,7 @@
 {
     [self saveConfig];
 
+    [self->iwadController setEnvironment];
     ExecuteProgram("chocolate-setup", NULL, NULL);
 }
 

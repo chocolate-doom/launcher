@@ -20,6 +20,8 @@
 //
 //-----------------------------------------------------------------------------
 
+#include <stdlib.h>
+#include <string.h>
 #include <AppKit/AppKit.h>
 #include "IWADController.h"
 #include "IWADLocation.h"
@@ -263,6 +265,64 @@ static NSString *IWADFilenames[NUM_IWAD_TYPES + 1] =
     {
         [self openConfigWindow: nil];
     }
+}
+
+// Set the DOOMWADPATH environment variable to contain the path to each
+// of the configured IWAD files.
+
+- (void) setEnvironment
+{
+    IWADLocation *iwadList[NUM_IWAD_TYPES];
+    NSString *location;
+    unsigned int i;
+    unsigned int len;
+    BOOL first;
+    char *env;
+
+    [self getIWADList: iwadList];
+
+    // Calculate length of environment string.
+
+    len = 30;
+
+    for (i=0; i<NUM_IWAD_TYPES; ++i)
+    {
+        location = [iwadList[i] getLocation];
+
+        if (location != nil && [location length] > 0)
+        {
+            len += [location length] + 1;
+        }
+    }
+
+    // Build string.
+
+    env = malloc(len);
+    strcpy(env, "DOOMWADPATH=");
+
+    first = YES;
+
+    for (i=0; i<NUM_IWAD_TYPES; ++i)
+    {
+        location = [iwadList[i] getLocation];
+
+        if (location != nil && [location length] > 0)
+        {
+            if (!first)
+            {
+                strcat(env, ":");
+            }
+
+            strcat(env, [location UTF8String]);
+            first = NO;
+        }
+    }
+
+    // Load into environment:
+
+    putenv(env);
+
+    //free(env);
 }
 
 @end

@@ -45,6 +45,7 @@
 - (BOOL) setDropdownList;
 - (void) setDropdownSelection;
 - (void) saveConfig;
+- (void) setEnvironment;
 
 @end
 
