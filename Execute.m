@@ -99,6 +99,8 @@ void ExecuteProgram(const char *executable, const char *iwad, const char *args)
 
     if (childpid == 0)
     {
+        signal(SIGCHLD, SIG_DFL);
+
         DoExec(executable, iwad, args);
     }
     else
