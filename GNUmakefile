@@ -26,6 +26,7 @@ $(STAGING_DIR): launcher
 	cp launcher "$(APP_DIR)/Contents/MacOS/"
 	# TODO: copy Doom and setup binaries into app dir
 	# TODO: copy other documentation into staging dir
+	find $(STAGING_DIR) -name .svn -delete -exec rm -rf {} \;
 
 # Launcher build:
 
