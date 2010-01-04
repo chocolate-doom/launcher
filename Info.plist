@@ -13,7 +13,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>Cocoa Doom 1.2.1</string>
 	<key>CFBundleIconFile</key>
-	<string>chocolate-doom.icns</string>
+	<string>app.icns</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

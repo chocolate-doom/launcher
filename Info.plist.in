@@ -11,7 +11,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>@PACKAGE_STRING@</string>
 	<key>CFBundleIconFile</key>
-	<string>chocolate-doom.icns</string>
+	<string>app.icns</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
