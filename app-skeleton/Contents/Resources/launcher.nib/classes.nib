@@ -27,7 +27,12 @@
             ACTIONS = {launch = id; runSetup = id; }; 
             CLASS = LauncherManager; 
             LANGUAGE = ObjC; 
-            OUTLETS = {commandLineArguments = id; launcherWindow = id; packageLabel = id; }; 
+            OUTLETS = {
+                commandLineArguments = id; 
+                iwadController = id; 
+                launcherWindow = id; 
+                packageLabel = id; 
+            }; 
             SUPERCLASS = NSObject; 
         }
     ); 
