@@ -7,6 +7,7 @@ DMG=$(PACKAGE_TARNAME)-$(PACKAGE_VERSION).dmg
 # DMG file containing package:
 
 $(DMG) : $(STAGING_DIR)
+	rm -f $@
 	hdiutil create -volname "$(PACKAGE_STRING)" -srcdir $(STAGING_DIR) $@
 
 clean : launcher_clean
