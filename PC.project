@@ -26,7 +26,8 @@
 	LauncherManager.h
     );
     IMAGES = (
-	48x48.png
+	48x48.png,
+        128x128.png
     );
     INSTALLDIR = "$(HOME)/GNUstep";
     INTERFACES = (

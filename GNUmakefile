@@ -21,7 +21,8 @@ Resources/launcher.nib \
 Resources/Main.gsmarkup \
 Resources/MainMenu-GNUstep.gsmarkup \
 Resources/MainMenu-OSX.gsmarkup \
-Resources/48x48.png 
+Resources/48x48.png \
+Resources/128x128.png
 
 
 #
