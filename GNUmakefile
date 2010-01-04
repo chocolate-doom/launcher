@@ -22,6 +22,7 @@ $(STAGING_DIR): launcher
 	rm -rf $(STAGING_DIR)
 	mkdir $(STAGING_DIR)
 	cp -R app-skeleton "$(APP_DIR)"
+	cp Info.plist "$(APP_DIR)/Contents/"
 	cp launcher "$(APP_DIR)/Contents/MacOS/"
 	# TODO: copy Doom and setup binaries into app dir
 	# TODO: copy other documentation into staging dir
