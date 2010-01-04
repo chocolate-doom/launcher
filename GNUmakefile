@@ -17,7 +17,7 @@ chocolate-launcher_APPLICATION_ICON = 48x48.png
 # Resource files
 #
 chocolate-launcher_RESOURCE_FILES = \
-Resources/launcher.gorm \
+Resources/launcher.nib \
 Resources/Main.gsmarkup \
 Resources/MainMenu-GNUstep.gsmarkup \
 Resources/MainMenu-OSX.gsmarkup \

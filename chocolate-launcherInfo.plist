@@ -11,7 +11,7 @@
     FullVersionID = 0.1;
     NSExecutable = "chocolate-launcher";
     NSIcon = 48x48.png;
-    NSMainNibFile = launcher.gorm;
+    NSMainNibFile = launcher.nib;
     NSPrincipalClass = NSApplication;
     NSRole = Application;
     URL = "http://www.chocolate-doom.org/";

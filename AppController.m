@@ -56,7 +56,7 @@
 
 - (void)awakeFromNib
 {
-    [[NSApp mainMenu] setTitle:@"ChocolateDoomLauncher"];
+    [[NSApp mainMenu] setTitle:@"ChocolateDoom"];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotif

@@ -30,7 +30,7 @@
     );
     INSTALLDIR = "$(HOME)/GNUstep";
     INTERFACES = (
-	launcher.gorm,
+	launcher.nib,
 	Main.gsmarkup,
 	"MainMenu-GNUstep.gsmarkup",
 	"MainMenu-OSX.gsmarkup"
@@ -44,7 +44,7 @@
     LINKEROPTIONS = "";
     LOCALIZED_RESOURCES = (
     );
-    MAININTERFACE = launcher.gorm;
+    MAININTERFACE = launcher.nib;
     MAKEFILEDIR = "$(GNUSTEP_MAKEFILES)";
     OBJC_COMPILEROPTIONS = "";
     OTHER_RESOURCES = (
